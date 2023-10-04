@@ -8,11 +8,22 @@ class Student:
         self.grades = {}
         
 class Mentor:
-    def __init__(self, name, surname):
+    def __init__(self, name, surname, courses_attached=[]):
         self.name = name
         self.surname = surname
-        self.courses_attached = []
+        self.courses_attached = courses_attached
         
+
+
+
+class Lecturer(Mentor):
+    def __init__(self, name, surname, courses_attached=[]):
+        super().__init__(name, surname, courses_attached)
+
+class Reviewer(Mentor):
+    def __init__(self, name, surname, courses_attached=[]):
+        super().__init__(name, surname, courses_attached)
+
     def rate_hw(self, student, course, grade):
         if isinstance(student, Student) and course in self.courses_attached and course in student.courses_in_progress:
             if course in student.grades:
