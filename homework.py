@@ -57,6 +57,9 @@ class Lecturer(Mentor):
             total_grades += grade
         return statistics.mean(total_grades)
 
+    def __lt__(self, other):
+        return self.avg_grade() < other.avg_grade()
+
     def __str__(self):
         return (f'Имя: {self.name}\nФамилия: {self.surname}\n'
                 f'Средняя оценка за лекции: {round(self.avg_grade(), 1)}')
@@ -86,10 +89,10 @@ best_student.courses_in_progress += ['Python']
 best_student.courses_in_progress += ['Git']
 best_student.finished_courses += ['Введение в программирование']
 
-best_student1 = Student('Имя', 'Фамилия', 'your_gender')
-best_student1.courses_in_progress += ['Python']
-best_student1.courses_in_progress += ['Git']
-best_student1.finished_courses += ['Введение в программирование']
+best_student_1 = Student('Имя', 'Фамилия', 'your_gender')
+best_student_1.courses_in_progress += ['Python']
+best_student_1.courses_in_progress += ['Git']
+best_student_1.finished_courses += ['Введение в программирование']
 
 cool_reviewer = Reviewer('Some', 'Buddy')
 cool_reviewer.courses_attached += ['Python']
@@ -102,28 +105,39 @@ cool_reviewer.rate_hw(best_student, 'Git', 9)
 cool_reviewer.rate_hw(best_student, 'Git', 8)
 cool_reviewer.rate_hw(best_student, 'Git', 10)
 
-cool_reviewer.rate_hw(best_student1, 'Python', 7)
-cool_reviewer.rate_hw(best_student1, 'Python', 8)
-cool_reviewer.rate_hw(best_student1, 'Python', 9)
-cool_reviewer.rate_hw(best_student1, 'Git', 10)
-cool_reviewer.rate_hw(best_student1, 'Git', 7)
-cool_reviewer.rate_hw(best_student1, 'Git', 10)
+cool_reviewer.rate_hw(best_student_1, 'Python', 7)
+cool_reviewer.rate_hw(best_student_1, 'Python', 8)
+cool_reviewer.rate_hw(best_student_1, 'Python', 9)
+cool_reviewer.rate_hw(best_student_1, 'Git', 10)
+cool_reviewer.rate_hw(best_student_1, 'Git', 7)
+cool_reviewer.rate_hw(best_student_1, 'Git', 10)
 
 best_lecturer = Lecturer('John', 'Doe')
 best_lecturer.courses_attached += ['Python']
+
+best_lecturer_1 = Lecturer('Jack', 'Smith')
+best_lecturer_1.courses_attached += ['Python']
 
 best_student.rate_lecturer(best_lecturer, 'Python', 10)
 best_student.rate_lecturer(best_lecturer, 'Python', 8)
 best_student.rate_lecturer(best_lecturer, 'Python', 8)
 
+best_student_1.rate_lecturer(best_lecturer_1, 'Python', 8)
+best_student_1.rate_lecturer(best_lecturer_1, 'Python', 8)
+best_student_1.rate_lecturer(best_lecturer_1, 'Python', 8)
+
 print(best_student)
 print()
-print(best_student1)
+print(best_student_1)
 print()
 print(cool_reviewer)
 print()
 print(best_lecturer)
 print()
-print(best_student < best_student1)
-print(best_student > best_student1)
-print(best_student == best_student1)
+print(best_student < best_student_1)
+print(best_student > best_student_1)
+print(best_student == best_student_1)
+print()
+print(best_lecturer < best_lecturer_1)
+print(best_lecturer > best_lecturer_1)
+print(best_lecturer == best_lecturer_1)
