@@ -141,3 +141,26 @@ print()
 print(best_lecturer < best_lecturer_1)
 print(best_lecturer > best_lecturer_1)
 print(best_lecturer == best_lecturer_1)
+print()
+
+list_students = [best_student, best_student_1]
+
+def stud_avg_grade(list_students, course_name):
+    total_grades = []
+    for student in list_students:
+        total_grades += student.grades[course_name]
+    return (f' Средняя оценка всех студентов на курсе {course_name}:'
+            f' {round(statistics.mean(total_grades))}')
+
+print(stud_avg_grade(list_students, 'Python'))
+print(stud_avg_grade(list_students, 'Git'))
+
+
+def lect_avg_grade(list_lecturers, course_name):
+    total_grades = []
+    for lecturer in list_lecturers:
+        total_grades += lecturer.grades[course_name]
+    return (f' Средняя оценка всех лекторов на курсе {course_name}:'
+            f' {round(statistics.mean(total_grades), 1)}')
+
+print(lect_avg_grade([best_lecturer, best_lecturer_1], 'Python'))
